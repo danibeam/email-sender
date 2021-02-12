@@ -5,6 +5,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(require("./routes/index"));
 
-app.listen(3000, () => {
-  console.log("server on port 3000");
+app.listen(5002, () => {
+  console.log("server on port 5002");
 });
