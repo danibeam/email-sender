@@ -11,7 +11,6 @@ router.post("/send-email", async (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      // Recibir auth por body? -> asi puedo usar solo una API para todas las webs
       user: process.env.user,
       pass: process.env.pass,
     },
@@ -21,14 +20,9 @@ router.post("/send-email", async (req, res) => {
   });
 
   await transporter
-    // .sendMail({
-    //   from: "'Dani - test' <dani@abierto24.com>",
-    //   to: "danibeam97@gmail.com",
-    //   subject: "Prueba - contact form",
-    //   text: "Hola, esto es una prueba",
-    // })
     .sendMail({
-      from: "Admin - Abierto24.com",
+      from: "Admin - Abierto24.com <info@abierto24.com>",
+      // from: `Admin - Abierto24.com <${emailDominio}>`,
       to: emailDominio,
       subject: `Formulario de contacto - ${dominio}`,
       text: `
