@@ -1,12 +1,32 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
+
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: "http://caktus.eu" }));
 app.use(require("./routes/index"));
 
-app.listen(5002, () => {
-  console.log("server on port 5002");
-});
+// app.listen(5002, () => {
+//   console.log("server on port 5002");
+// });
+
+https
+  .createServer(
+    {
+      cert: fs.readFileSync(
+        path.resolve(__dirname, "./../certificates/cert.pem")
+      ),
+      key: fs.readFileSync(
+        path.resolve(__dirname, "./../certificates/key.pem")
+      ),
+    },
+    app
+  )
+  .listen("5002", () => {
+    console.log("HTTPs server running on port 5002");
+  });
