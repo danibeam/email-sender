@@ -11,9 +11,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: "http://caktus.eu" }));
 app.use(require("./routes/index"));
 
-// app.listen(5002, () => {
-//   console.log("server on port 5002");
-// });
+app.listen(5002, () => {
+  console.log("HTTP server on port 5002");
+});
 
 https
   .createServer(
@@ -27,6 +27,6 @@ https
     },
     app
   )
-  .listen("5002", () => {
-    console.log("HTTPs server running on port 5002");
+  .listen("443", () => {
+    console.log("HTTPs server running on port 443");
   });
