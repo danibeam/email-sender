@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
@@ -8,8 +7,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: "http://caktus.eu" }));
-app.use(cors({ origin: "https://gcpol.es" }));
 app.use(require("./routes/index"));
 
 app.listen(5002, () => {
