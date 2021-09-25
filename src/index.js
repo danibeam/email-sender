@@ -15,9 +15,9 @@ app.use(
   })
 );
 
-app.listen(5002, () => {
-  console.log("HTTP server on port 5002");
-});
+// app.listen(5002, () => {
+//   console.log("HTTP server on port 5002");
+// });
 
 https
   .createServer(
@@ -34,6 +34,6 @@ https
     },
     app
   )
-  .listen(443, () => {
-    console.log("HTTPs server running on port 443");
+  .listen(5002, () => {
+    console.log("HTTPs server running on port 5002");
   });
