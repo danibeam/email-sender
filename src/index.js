@@ -15,26 +15,25 @@ app.use(
   })
 );
 
-// app.listen(5002, () => {
-//   console.log("HTTP server on port 5002");
-// });
-
-https.createServer({}, app).listen("5002", () => {
-  console.log("HTTPs port 5002");
+app.listen(5002, () => {
+  console.log("HTTP server on port 5002");
 });
 
-// https
-//   .createServer(
-//     {
-//       cert: fs.readFileSync(
-//         path.resolve(__dirname, "./../certificates/cert.pem")
-//       ),
-//       key: fs.readFileSync(
-//         path.resolve(__dirname, "./../certificates/key.pem")
-//       ),
-//     },
-//     app
-//   )
-//   .listen("443", () => {
-//     console.log("HTTPs server running on port 443");
-//   });
+https
+  .createServer(
+    {
+      cert: fs.readFileSync(
+        path.resolve(
+          __dirname,
+          "./../certificates/gcpol.es_ssl_certificate.cer"
+        )
+      ),
+      key: fs.readFileSync(
+        path.resolve(__dirname, "./../certificates/_.gcpol.es_private_key.key")
+      ),
+    },
+    app
+  )
+  .listen(443, () => {
+    console.log("HTTPs server running on port 443");
+  });
