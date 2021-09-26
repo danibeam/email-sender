@@ -37,8 +37,8 @@ https
           "./../certificates/_.gcpol.es_ssl_certificate_INTERMEDIATE.cer"
         )
       ),
-      requestCert: true,
-      rejectUnauthorized: false,
+      // requestCert: true,
+      // rejectUnauthorized: false,
     },
     app
   )
