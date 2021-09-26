@@ -31,6 +31,14 @@ https
       key: fs.readFileSync(
         path.resolve(__dirname, "./../certificates/_.gcpol.es_private_key.key")
       ),
+      ca: fs.readFileSync(
+        path.resolve(
+          __dirname,
+          "./../certificates/_.gcpol.es_ssl_certificate_INTERMEDIATE.cer"
+        )
+      ),
+      requestCert: true,
+      rejectUnauthorized: false,
     },
     app
   )
