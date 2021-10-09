@@ -15,7 +15,7 @@ const corsOptions = {
   },
 };
 
-router.post("/send-email", cors(corsOptions), async (req, res) => {
+router.post("/send-email", async (req, res) => {
   const { nombre, email, mensaje, dominio, emailDominio } = req.body;
 
   const transporter = nodemailer.createTransport({
