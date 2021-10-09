@@ -5,17 +5,17 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 const whitelist = ["http://diesan.es", "http://caktus.eu"];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-router.post("/send-email", cors(corsOptions), async (req, res) => {
+router.post("/send-email", cors(corsOptionsDelegate), async (req, res) => {
   const { nombre, email, mensaje, dominio, emailDominio } = req.body;
 
   const transporter = nodemailer.createTransport({
