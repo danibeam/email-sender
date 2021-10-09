@@ -15,7 +15,7 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-router.post("/send-email", async (req, res) => {
+router.post("/send-email", cors(), async (req, res) => {
   const { nombre, email, mensaje, dominio, emailDominio } = req.body;
 
   const transporter = nodemailer.createTransport({
