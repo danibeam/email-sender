@@ -15,6 +15,12 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
+router.get("/", (req, res) => {
+  res.json({
+    hello: "world",
+  });
+});
+
 router.post("/send-email", cors(), async (req, res) => {
   const { nombre, email, mensaje, dominio, emailDominio } = req.body;
 
